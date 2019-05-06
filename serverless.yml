@@ -1,0 +1,130 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: myService # NOTE: update this with your service name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: 'dev'
+  region: ap-southeast-1
+  timeout: 30
+
+functions:
+  createUser:
+    handler: functions/user/create.main
+    description: Creates a new user
+    events:
+      - http:
+          path: users
+          method: post
+          cors:
+            origin: "*" 
+            headers: 
+              - Accept
+              - Content-Type
+              - Access-Control-Allow-Origin
+              - Access-Control-Allow-Credentials
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
+    package:
+      include:
+        - models
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action: "lambda:InvokeFunction"
+        Resource: "*"
+
+  updateUser:
+    handler: functions/user/update.main
+    description: Update user details
+    events:
+      - http:
+          path: users
+          method: put
+          cors:
+            origin: "*" 
+            headers: 
+              - Accept
+              - Content-Type
+              - Access-Control-Allow-Origin
+              - Access-Control-Allow-Credentials
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
+    package:
+      include:
+        - models
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action: "lambda:InvokeFunction"
+        Resource: "*"
+
+  getUser:
+    handler: functions/user/get.main
+    description: Get user profile
+    events:
+      - http:
+          path: users
+          method: get
+          cors:
+            origin: "*" 
+            headers: 
+              - Accept
+              - Content-Type
+              - Access-Control-Allow-Origin
+              - Access-Control-Allow-Credentials
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
+    package:
+      include:
+        - models
+  
+  deleteUser:
+    handler: functions/user/delete.main
+    description: Delete user profile
+    events:
+      - http:
+          path: users
+          method: delete
+          cors:
+            origin: "*" 
+            headers: 
+              - Accept
+              - Content-Type
+              - Access-Control-Allow-Origin
+              - Access-Control-Allow-Credentials
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
+    package:
+      include:
+        - models

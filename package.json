@@ -1,0 +1,17 @@
+{
+  "name": "myservice",
+  "version": "1.0.0",
+  "description": "A REST API Serverless demo",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Martti Dumangeng",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.5",
+    "uuid4": "^1.1.4"
+  }
+}
