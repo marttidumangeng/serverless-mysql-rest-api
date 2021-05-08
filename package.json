@@ -9,7 +9,7 @@
   "author": "Martti Dumangeng",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "mysql2": "^1.6.5",
     "sequelize": "^5.8.5",
     "uuid4": "^1.1.4"
